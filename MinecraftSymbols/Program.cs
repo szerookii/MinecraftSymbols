@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using ELFSharp.ELF.Sections;
 using ELFSharp.ELF;
@@ -9,8 +8,12 @@ namespace MinecraftSymbols
 {
     internal class Program
     {
+        public static int Dumped = 0;
+        
         public static void Main(string[] args)
         {
+            Console.Title = "MinecraftSymbols";
+            
             Console.WriteLine("File path :");
             Console.Write("> ");
             string FilePath = Console.ReadLine();
@@ -19,6 +22,7 @@ namespace MinecraftSymbols
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("File not found.");
+                Console.ReadKey();
                 return;
             }
 
@@ -33,7 +37,9 @@ namespace MinecraftSymbols
             
             foreach (var Symbol in Symbols.Entries)
             {
-                if (Symbol.Value != 0)
+                Console.Title = "MinecraftSymbols || " + Dumped + " symbols";
+                
+                if (Symbol.Value != 0  && Symbol.Name.StartsWith("_Z"))
                 {
                     // ToDo more work on writeCpp
                     if (Symbol.Type == SymbolType.Object)
@@ -49,11 +55,15 @@ namespace MinecraftSymbols
                         writeCpp("extern \"C\"" + Environment.NewLine + "{" + Environment.NewLine + "    void* " + Symbol.Name + "_ptr;\n}");
                         writeCpp("");
                     }
+
+                    Dumped++;
+                    Console.WriteLine("Dumped symbol : " + Symbol.Name + " (" + Symbol.Value.ToString("x8") + ")");
                 }
             }
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("All Minecraft symbols dumped.");
+            Console.WriteLine("All the Minecraft symbols have been dumped.");
+            Console.ReadKey();
         }
 
         static void writeCpp(string line)
