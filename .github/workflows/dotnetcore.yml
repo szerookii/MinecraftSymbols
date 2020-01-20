@@ -1,14 +1,16 @@
-name: .NET Core
+name: .NET
 
 on: [push]
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: debian-latest
 
     steps:
-    - name: Install .NET 4.7.2
+    - name: Install .NET
       run: wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg && sudo mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/ && wget -q https://packages.microsoft.com/config/debian/9/prod.list && sudo mv prod.list /etc/apt/sources.list.d/microsoft-prod.list && sudo chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg && sudo chown root:root /etc/apt/sources.list.d/microsoft-prod.list && sudo apt-get update && sudo apt-get install apt-transport-https && sudo apt-get update && sudo apt-get install dotnet-runtime-3.1
+    - name: Listing
+      run: ls
     - name: Build with dotnet
       run: dotnet publish -c Release -r win10-x64 /p:PublishSingleFile=true /p:PublishTrimmed=true
