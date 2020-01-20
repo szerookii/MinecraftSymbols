@@ -1,7 +1,0 @@
-C:\Users\Administrator\Documents\MinecraftSymbols\MinecraftSymbols\bin\Debug\MinecraftSymbols.exe
-C:\Users\Administrator\Documents\MinecraftSymbols\MinecraftSymbols\bin\Debug\MinecraftSymbols.pdb
-C:\Users\Administrator\Documents\MinecraftSymbols\MinecraftSymbols\bin\Debug\ELFSharp.dll
-C:\Users\Administrator\Documents\MinecraftSymbols\MinecraftSymbols\obj\Debug\MinecraftSymbols.csprojAssemblyReference.cache
-C:\Users\Administrator\Documents\MinecraftSymbols\MinecraftSymbols\obj\Debug\MinecraftSymbols.csproj.CopyComplete
-C:\Users\Administrator\Documents\MinecraftSymbols\MinecraftSymbols\obj\Debug\MinecraftSymbols.exe
-C:\Users\Administrator\Documents\MinecraftSymbols\MinecraftSymbols\obj\Debug\MinecraftSymbols.pdb
